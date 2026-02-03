@@ -35,7 +35,7 @@ const UniversityHero = () => (
               <Landmark className="w-4 h-4" />
               <span>Высшее образование в Европе</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
               УНИВЕРСИТЕТЫ<br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
                 ИСПАНИИ

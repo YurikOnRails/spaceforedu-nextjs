@@ -31,7 +31,7 @@ const SchoolHero = () => (
           <School className="w-4 h-4" />
           <span>Среднее образование в Европе</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           ШКОЛЫ ИСПАНИИ:<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
             ФУНДАМЕНТ БУДУЩЕГО

@@ -33,7 +33,7 @@ const ProHero = () => (
           <Bot className="w-4 h-4" />
           <span>Business Space</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
             В ВАШЕМ БИЗНЕСЕ

@@ -31,7 +31,7 @@ const CoursesHero = () => (
           <Languages className="w-4 h-4" />
           <span>Испанский язык без границ</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           КУРСЫ ИСПАНСКОГО<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500">
             ОТ ПЕРВЫХ СЛОВ ДО DELE

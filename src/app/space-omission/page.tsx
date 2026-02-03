@@ -31,7 +31,7 @@ const OmissionHero = () => (
           <Stamp className="w-4 h-4" />
           <span>Легализация документов в Испании</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           ОМОЛОГАЦИЯ<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400">
             ДИПЛОМОВ И АТТЕСТАТОВ

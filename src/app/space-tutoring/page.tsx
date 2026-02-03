@@ -33,7 +33,7 @@ const TutoringHero = () => (
           <BookOpen className="w-4 h-4" />
           <span>Extraescolares в Испании</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           ВНЕКЛАССНЫЕ ЗАНЯТИЯ<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300">
             И РЕПЕТИТОРСТВО

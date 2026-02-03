@@ -33,7 +33,7 @@ const CoachingHero = () => (
           <Sparkles className="w-4 h-4" />
           <span>Тренируем таланты детей и подростков</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
           PROFESSIONAL<br />
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-600">
             TALENT COACHING

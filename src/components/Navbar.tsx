@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Rocket, Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Rocket, Menu, X, Globe, ChevronDown, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ContactModal from './ContactModal';
@@ -150,9 +150,18 @@ const Navbar = () => {
           </button>
         </div>
 
-        <button className="lg:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        <div className="flex items-center gap-4 lg:hidden">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="text-white p-2 hover:text-cyan-400 transition-colors"
+            aria-label="Contact"
+          >
+            <Phone size={24} />
+          </button>
+          <button className="text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
@@ -169,6 +178,12 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
+            <button 
+              onClick={() => { setIsModalOpen(true); setIsMobileMenuOpen(false); }}
+              className="bg-cyan-500 text-white px-6 py-3 rounded-full font-bold uppercase tracking-widest shadow-lg shadow-cyan-500/20 mx-auto mt-4"
+            >
+              Консультация
+            </button>
           </div>
           
           <div className="flex justify-center gap-4 py-6 border-t border-white/10 mt-auto mb-20">
