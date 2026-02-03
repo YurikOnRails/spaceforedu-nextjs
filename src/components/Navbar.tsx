@@ -2,17 +2,34 @@
 
 import React, { useState, useEffect } from 'react';
 import { Rocket, Menu, X, Globe, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [language, setLanguage] = useState('RU');
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const pathname = usePathname();
 
   const languages = [
     { code: 'RU', label: 'Русский', flagUrl: 'https://flagcdn.com/w40/ru.png' },
     { code: 'ES', label: 'Español', flagUrl: 'https://flagcdn.com/w40/es.png' },
     { code: 'EN', label: 'English', flagUrl: 'https://flagcdn.com/w40/gb.png' },
+  ];
+
+  const mainLinks = [
+    { label: 'School', href: '/space-school' },
+    { label: 'University', href: '/space-university' },
+    { label: 'Business', href: '/space-pro' },
+  ];
+
+  const serviceLinks = [
+    { label: 'Курсы (Courses)', href: '/space-courses' },
+    { label: 'Репетиторство (Tutoring)', href: '/space-tutoring' },
+    { label: 'Коучинг (Coaching)', href: '/space-coaching' },
+    { label: 'Омологация (Homologation)', href: '/space-omission' },
   ];
 
   useEffect(() => {
@@ -24,21 +41,57 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center animate-pulse">
-            <Rocket className="text-white w-6 h-6" />
-          </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-cyan-400">
-            SPACEFOR<span className="text-cyan-400">EDU</span>
-          </span>
-        </div>
+        <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+          <img 
+            src="/logo.png" 
+            alt="SpaceForEdu Logo" 
+            className="h-16 w-auto" 
+          />
+        </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {['Услуги', 'Тарифы', 'Блог', 'FAQ'].map((item) => (
-            <a key={item} href={`#${item}`} className="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest">
-              {item}
-            </a>
+        <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
+          {mainLinks.map((item) => (
+            <Link 
+              key={item.href} 
+              href={item.href} 
+              className={`hover:text-cyan-400 transition-colors uppercase tracking-widest ${pathname === item.href ? 'text-cyan-400' : 'text-gray-300'}`}
+            >
+              {item.label}
+            </Link>
           ))}
+
+          {/* Services Dropdown */}
+          <div 
+            className="relative group"
+            onMouseEnter={() => setIsServicesOpen(true)}
+            onMouseLeave={() => setIsServicesOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer py-2">
+              Services
+              <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            <div className={`absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 transition-all duration-300 ${isServicesOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+              <div className="bg-[#0a0a0a] border border-white/10 rounded-xl overflow-hidden shadow-2xl backdrop-blur-md p-2">
+                {serviceLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block px-4 py-3 text-sm text-gray-300 hover:bg-white/5 hover:text-cyan-400 rounded-lg transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <Link href="/about" className="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest">
+            About
+          </Link>
+          <Link href="/blog" className="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest">
+            Blog
+          </Link>
           
           {/* Language Switcher Desktop */}
           <div className="relative">
@@ -83,21 +136,28 @@ const Navbar = () => {
           </button>
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="lg:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-black/95 absolute top-full left-0 w-full p-6 flex flex-col gap-4 text-center border-t border-white/10 h-screen">
-          {['Услуги', 'Тарифы', 'Блог', 'FAQ'].map((item) => (
-            <a key={item} href={`#${item}`} className="text-white text-lg py-2" onClick={() => setIsMobileMenuOpen(false)}>
-              {item}
-            </a>
-          ))}
+        <div className="lg:hidden bg-black/95 absolute top-full left-0 w-full p-6 flex flex-col gap-4 text-center border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="flex flex-col gap-6 py-4">
+            {[...mainLinks, ...serviceLinks, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }].map((item) => (
+              <Link 
+                key={item.href} 
+                href={item.href} 
+                className="text-white text-xl font-medium" 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
           
-          <div className="flex justify-center gap-4 py-4 border-t border-white/10 mt-4">
+          <div className="flex justify-center gap-4 py-6 border-t border-white/10 mt-auto mb-20">
             {languages.map((lang) => (
               <button
                 key={lang.code}
@@ -116,10 +176,6 @@ const Navbar = () => {
               </button>
             ))}
           </div>
-
-          <button className="bg-cyan-500 hover:bg-cyan-600 text-white w-full py-4 rounded-xl font-bold mt-4">
-            Связаться
-          </button>
         </div>
       )}
     </nav>

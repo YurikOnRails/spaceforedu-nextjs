@@ -1,35 +1,47 @@
 import React from 'react';
 import { Rocket, MessageSquare, Globe } from 'lucide-react';
+import Link from 'next/link';
 
 const Footer = () => (
   <footer className="bg-black py-20 border-t border-white/5">
     <div className="container mx-auto px-6">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20">
         <div className="max-w-xs">
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 bg-cyan-500 rounded-full flex items-center justify-center">
-              <Rocket size={16} className="text-white" />
-            </div>
-            <span className="text-xl font-bold text-white tracking-tighter">SPACEFOR<span className="text-cyan-400">EDU</span></span>
-          </div>
+          <Link href="/" className="flex items-center gap-2 mb-6">
+            <img 
+              src="/logo.png" 
+              alt="SpaceForEdu Logo" 
+              className="h-16 w-auto" 
+            />
+          </Link>
           <p className="text-gray-500 text-sm">Ваш надежный проводник в мире испанского образования. Профессионально, быстро, с гарантией.</p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 w-full lg:w-auto">
           <div>
-            <h4 className="text-white font-bold mb-6">Компания</h4>
+            <h4 className="text-white font-bold mb-6">Образование</h4>
             <div className="flex flex-col gap-3 text-gray-500 text-sm">
-              <a href="#" className="hover:text-cyan-400 transition-colors">О нас</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Услуги</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Блог</a>
+              <Link href="/space-school" className="hover:text-cyan-400 transition-colors">Школы</Link>
+              <Link href="/space-university" className="hover:text-cyan-400 transition-colors">Университеты</Link>
+              <Link href="/space-courses" className="hover:text-cyan-400 transition-colors">Языковые курсы</Link>
+              <Link href="/space-tutoring" className="hover:text-cyan-400 transition-colors">Репетиторы</Link>
             </div>
           </div>
           <div>
-            <h4 className="text-white font-bold mb-6">Помощь</h4>
+            <h4 className="text-white font-bold mb-6">Услуги</h4>
             <div className="flex flex-col gap-3 text-gray-500 text-sm">
-              <a href="#" className="hover:text-cyan-400 transition-colors">FAQ</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Контакты</a>
-              <a href="#" className="hover:text-cyan-400 transition-colors">Визовая помощь</a>
+              <Link href="/space-pro" className="hover:text-cyan-400 transition-colors">Для бизнеса (AI)</Link>
+              <Link href="/space-coaching" className="hover:text-cyan-400 transition-colors">Коучинг</Link>
+              <Link href="/space-omission" className="hover:text-cyan-400 transition-colors">Омологация</Link>
+              <Link href="/space-school" className="hover:text-cyan-400 transition-colors">Визовая поддержка</Link>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-white font-bold mb-6">Компания</h4>
+            <div className="flex flex-col gap-3 text-gray-500 text-sm">
+              <Link href="/about" className="hover:text-cyan-400 transition-colors">О нас</Link>
+              <Link href="/blog" className="hover:text-cyan-400 transition-colors">Блог</Link>
+              <a href="#Contact" className="hover:text-cyan-400 transition-colors">Контакты</a>
             </div>
           </div>
           <div>
