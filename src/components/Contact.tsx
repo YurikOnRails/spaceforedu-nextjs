@@ -21,21 +21,21 @@ const Contact = () => {
             
             <div className="space-y-6">
               <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-cyan-400">
+                <a href="tel:+34983889093" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all cursor-pointer">
                   <Phone size={20} />
-                </div>
+                </a>
                 <div>
                   <div className="text-xs text-gray-500 uppercase tracking-widest">Звонок</div>
-                  <div className="font-bold">+34 983 889 093</div>
+                  <a href="tel:+34983889093" className="font-bold hover:text-cyan-400 transition-colors">+34 983 889 093</a>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-white">
-                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-cyan-400">
+                <a href="mailto:hello@spaceforedu.com" className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all cursor-pointer">
                   <Mail size={20} />
-                </div>
+                </a>
                 <div>
                   <div className="text-xs text-gray-500 uppercase tracking-widest">Email</div>
-                  <div className="font-bold">hello@spaceforedu.com</div>
+                  <a href="mailto:hello@spaceforedu.com" className="font-bold hover:text-cyan-400 transition-colors">hello@spaceforedu.com</a>
                 </div>
               </div>
             </div>
