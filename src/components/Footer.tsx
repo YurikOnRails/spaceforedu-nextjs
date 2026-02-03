@@ -59,7 +59,7 @@ const Footer = () => (
       </div>
       
       <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-gray-600 text-xs">© 2024 SpaceForEdu. Все права защищены.</div>
+        <div className="text-gray-600 text-xs">© {new Date().getFullYear()} SpaceForEdu. Все права защищены.</div>
         <div className="flex gap-6 text-gray-600 text-xs">
           <a href="#" className="hover:text-white transition-colors">Политика конфиденциальности</a>
           <a href="#" className="hover:text-white transition-colors">Публичная оферта</a>
