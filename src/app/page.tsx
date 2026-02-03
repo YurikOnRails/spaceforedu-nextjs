@@ -7,7 +7,6 @@ import FAQSection from '../components/FAQSection';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
-import { MessageSquare } from 'lucide-react';
 
 export default function Home() {
   const plans = [
@@ -59,13 +58,6 @@ export default function Home() {
       <Contact />
       <Footer />
       <ScrollToTop />
-      
-      {/* Floating Action Button for mobile */}
-      <div className="fixed bottom-6 right-6 z-40 md:hidden">
-        <button className="w-14 h-14 bg-green-500 rounded-full shadow-2xl flex items-center justify-center text-white animate-bounce cursor-pointer">
-          <MessageSquare fill="white" size={24} />
-        </button>
-      </div>
     </div>
   );
 }
