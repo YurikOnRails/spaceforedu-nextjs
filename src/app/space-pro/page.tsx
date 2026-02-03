@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
+import ContactModal from '../../components/ContactModal';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection, { Plan } from '../../components/PricingSection';
@@ -16,42 +17,65 @@ import {
   ShieldCheck, 
   Users,
   Briefcase,
-  ArrowRight
+  ArrowRight,
+  MessageCircle
 } from 'lucide-react';
 import Image from 'next/image';
 
-const ProHero = () => (
-  <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-[#020617]"></div>
-    {/* Tech/AI theme - Blue/Teal/Neon */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-    
-    <div className="container mx-auto px-6 relative z-10 text-center">
-      <RevealOnScroll>
-        <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-blue-400 text-sm mb-8">
-          <Bot className="w-4 h-4" />
-          <span>Business Space</span>
-        </div>
-        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
-          ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ<br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
-            В ВАШЕМ БИЗНЕСЕ
-          </span>
-        </h1>
-        <p className="text-gray-400 text-xl max-w-3xl mx-auto mb-12">
-          Обучите вашу команду современным инструментам, а мы позаботимся, чтобы программа обучения была адаптирована под ваш продукт и рынок.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-blue-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-blue-500/20 cursor-pointer">
-            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
-            <ArrowRight size={20} />
-          </button>
-        </div>
-      </RevealOnScroll>
-    </div>
-  </section>
-);
+const ProHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-[#020617]"></div>
+      {/* Tech/AI theme - Blue/Teal/Neon */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+      
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        <RevealOnScroll>
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-blue-400 text-sm mb-8">
+            <Bot className="w-4 h-4" />
+            <span>Business Space</span>
+          </div>
+          <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
+            ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
+              В ВАШЕМ БИЗНЕСЕ
+            </span>
+          </h1>
+          <p className="text-gray-400 text-xl max-w-3xl mx-auto mb-12">
+            Обучите вашу команду современным инструментам, а мы позаботимся, чтобы программа обучения была адаптирована под ваш продукт и рынок.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:-translate-y-1 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(37,99,235,0.5)] hover:shadow-[0_0_30px_rgba(37,99,235,0.8)] border border-white/10 backdrop-blur-sm cursor-pointer"
+            >
+              ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+              <ArrowRight size={20} />
+            </button>
+            
+            <a 
+              href="https://wa.me/34663689393" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-black/40 backdrop-blur-md border border-[#25D366]/50 text-[#25D366] px-10 py-5 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-xl hover:bg-[#25D366]/10 hover:shadow-[0_0_20px_rgba(37,211,102,0.4)] cursor-pointer"
+            >
+              <MessageCircle size={20} />
+              WhatsApp
+            </a>
+          </div>
+        </RevealOnScroll>
+      </div>
+
+      <ContactModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+    </section>
+  );
+};
 
 const Solutions = () => {
   const solutions = [
