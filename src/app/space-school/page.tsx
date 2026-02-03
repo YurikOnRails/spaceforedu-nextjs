@@ -5,13 +5,13 @@ import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
+import PricingSection from '../../components/PricingSection';
+import FAQSection from '../../components/FAQSection';
 import { 
   GraduationCap, 
-  BookOpen, 
   FileCheck, 
   Users, 
   Globe, 
-  CheckCircle2, 
   School, 
   BrainCircuit,
   Languages,
@@ -170,7 +170,7 @@ const SchoolTypes = () => (
   </section>
 );
 
-const PricingSchool = () => {
+export default function SpaceSchool() {
   const plans = [
     {
       name: "План Планета",
@@ -195,8 +195,7 @@ const PricingSchool = () => {
         "Подготовка к собеседованию",
         "Легализация документов"
       ],
-      accent: true,
-      color: "purple"
+      accent: true
     },
     {
       name: "План Галактика",
@@ -213,47 +212,6 @@ const PricingSchool = () => {
     }
   ];
 
-  return (
-    <section id="Тарифы" className="py-32 relative bg-[#020617]">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ваш билет в <span className="text-purple-400">будущее</span></h2>
-          <p className="text-gray-400">Инвестиция в образование ребенка — самая надежная инвестиция.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan, i) => (
-            <RevealOnScroll key={i}>
-              <div className={`relative p-10 rounded-3xl border transition-all hover:scale-105 duration-300 h-full flex flex-col ${plan.accent ? 'bg-gradient-to-b from-purple-900/40 to-black border-purple-500 shadow-[0_0_40px_rgba(168,85,247,0.2)]' : 'bg-white/5 border-white/10'}`}>
-                {plan.accent && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-600 text-white px-6 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
-                    Выбор родителей
-                  </div>
-                )}
-                <h3 className="text-white text-2xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-6">{plan.desc}</p>
-                <div className="text-4xl font-black text-white mb-8">{plan.price}</div>
-                <div className="space-y-4 mb-10 flex-grow">
-                  {plan.features.map((f, idx) => (
-                    <div key={idx} className="flex items-start gap-3 text-gray-300 text-sm">
-                      <CheckCircle2 size={16} className={`flex-shrink-0 mt-0.5 ${plan.accent ? 'text-purple-400' : 'text-cyan-400'}`} />
-                      {f}
-                    </div>
-                  ))}
-                </div>
-                <button className={`w-full py-4 rounded-xl font-bold transition-all cursor-pointer ${plan.accent ? 'bg-purple-600 text-white hover:bg-purple-500 shadow-lg shadow-purple-900/20' : 'border border-white/20 text-white hover:bg-white/10'}`}>
-                  Начать поступление
-                </button>
-              </div>
-            </RevealOnScroll>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const FAQSchool = () => {
-  const [openIdx, setOpenIdx] = React.useState(0);
   const faqs = [
     { q: "Нужно ли ребенку знать испанский язык?", a: "Для международных школ — нет, достаточно английского. Для государственных школ знание испанского желательно, но часто детей принимают с условием интенсивного изучения языка на месте. Мы подберем курсы." },
     { q: "В каком возрасте лучше переезжать?", a: "Оптимально — до 12-13 лет для легкой адаптации. Однако мы успешно устраиваем и старшеклассников (15-16 лет), подбирая программы Pre-University или IB." },
@@ -262,41 +220,26 @@ const FAQSchool = () => {
   ];
 
   return (
-    <section className="py-32 bg-black/30">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <h2 className="text-3xl font-bold text-white text-center mb-12">Вопросы <span className="text-gray-500">родителей</span></h2>
-        <div className="space-y-4">
-          {faqs.map((faq, i) => (
-            <div key={i} className="border border-white/10 rounded-2xl overflow-hidden bg-white/5">
-              <button 
-                className="w-full p-6 text-left flex justify-between items-start text-white font-bold hover:bg-white/5 transition-colors cursor-pointer gap-4"
-                onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
-              >
-                <span>{faq.q}</span>
-                <span className={`text-purple-400 transition-transform duration-300 ${openIdx === i ? 'rotate-45' : ''}`}>+</span>
-              </button>
-              {openIdx === i && (
-                <div className="px-6 pb-6 text-gray-400 leading-relaxed text-sm animate-fadeIn border-t border-white/5 pt-4">
-                  {faq.a}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default function SpaceSchool() {
-  return (
     <div className="min-h-screen bg-[#020617] text-white selection:bg-purple-500/30 selection:text-purple-200 font-sans">
       <Navbar />
       <SchoolHero />
       <Steps />
       <SchoolTypes />
-      <PricingSchool />
-      <FAQSchool />
+      <PricingSection
+        id="Тарифы"
+        title="Ваш билет в"
+        highlightedWord="будущее"
+        subtitle="Инвестиция в образование ребенка — самая надежная инвестиция."
+        plans={plans}
+        accentColor="purple"
+        buttonText="Начать поступление"
+      />
+      <FAQSection
+        title="Вопросы"
+        highlightedWord="родителей"
+        items={faqs}
+        accentColor="text-purple-400"
+      />
       <Contact />
       <Footer />
     </div>
