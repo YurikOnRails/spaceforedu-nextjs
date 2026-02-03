@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${outfit.variable} font-sans antialiased bg-[#020617]`}
+        className={`${manrope.variable} font-sans antialiased bg-[#020617]`}
       >
         {children}
       </body>

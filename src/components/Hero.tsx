@@ -15,9 +15,11 @@ const Hero = () => (
           <Star className="w-4 h-4 fill-cyan-400" />
           <span>№1 Агентство по образованию в Испании</span>
         </div>
-        <h1 className="text-5xl md:text-8xl font-black text-white mb-8 leading-tight">
-          ОБУЧЕНИЕ В ИСПАНИИ:<br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[1.1] tracking-tight">
+          <span className="block mb-2 text-4xl md:text-6xl lg:text-7xl font-bold text-gray-100">
+            ОБУЧЕНИЕ В ИСПАНИИ
+          </span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 drop-shadow-[0_0_35px_rgba(6,182,212,0.3)]">
             ПОСТУПЛЕНИЕ С ГАРАНТИЕЙ
           </span>
         </h1>
