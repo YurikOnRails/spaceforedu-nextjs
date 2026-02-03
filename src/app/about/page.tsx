@@ -117,10 +117,11 @@ const CoreValues = () => (
           <div className="flex-1 relative w-full">
              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] aspect-[4/3] rotate-1 hover:rotate-0 transition-all duration-500">
               <Image 
-                src="https://images.unsplash.com/photo-1529390003868-6c640a174a5c?auto=format&fit=crop&q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1200" 
                 alt="Happy students" 
                 fill
                 className="object-cover"
+                unoptimized={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
@@ -161,10 +162,11 @@ const CoreValues = () => (
           <div className="flex-1 relative w-full">
              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] aspect-[4/3] -rotate-1 hover:rotate-0 transition-all duration-500">
               <Image 
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=1200" 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1200" 
                 alt="Support team" 
                 fill
                 className="object-cover"
+                unoptimized={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>

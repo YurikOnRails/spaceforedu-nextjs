@@ -60,11 +60,12 @@ const UniversityHero = () => (
           <RevealOnScroll>
             <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
               <Image 
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1200" 
                 alt="Students walking in university campus" 
                 width={600}
                 height={800}
                 className="w-full h-auto object-cover"
+                unoptimized={true}
               />
             </div>
             {/* Decorative elements */}

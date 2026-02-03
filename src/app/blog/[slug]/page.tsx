@@ -78,6 +78,7 @@ export default async function BlogPost({ params }: Props) {
               alt={frontMatter.title} 
               fill
               className="object-cover"
+              unoptimized={true}
             />
           </div>
 

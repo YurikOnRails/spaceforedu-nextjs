@@ -41,11 +41,12 @@ const Services = () => {
           <div className="flex-1 relative">
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.2)]">
               <Image 
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=1200" 
                 alt="Students in Spain" 
                 width={1000}
                 height={667}
                 className="w-full h-auto"
+                unoptimized={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             </div>
