@@ -20,9 +20,9 @@ const Navbar = () => {
   ];
 
   const mainLinks = [
-    { label: 'School', href: '/space-school' },
-    { label: 'University', href: '/space-university' },
-    { label: 'Business', href: '/space-pro' },
+    { label: 'Школы', href: '/space-school' },
+    { label: 'ВУЗы', href: '/space-university' },
+    { label: 'Бизнес', href: '/space-pro' },
   ];
 
   const serviceLinks = [
@@ -67,7 +67,7 @@ const Navbar = () => {
             onMouseLeave={() => setIsServicesOpen(false)}
           >
             <button className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest cursor-pointer py-2">
-              Services
+              Услуги
               <ChevronDown size={14} className={`transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
             </button>
             
@@ -87,10 +87,10 @@ const Navbar = () => {
           </div>
 
           <Link href="/about" className="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest">
-            About
+            О нас
           </Link>
           <Link href="/blog" className="text-gray-300 hover:text-cyan-400 transition-colors uppercase tracking-widest">
-            Blog
+            Блог
           </Link>
           
           {/* Language Switcher Desktop */}
@@ -145,7 +145,7 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-black/95 absolute top-full left-0 w-full p-6 flex flex-col gap-4 text-center border-t border-white/10 h-[calc(100vh-80px)] overflow-y-auto">
           <div className="flex flex-col gap-6 py-4">
-            {[...mainLinks, ...serviceLinks, { label: 'About', href: '/about' }, { label: 'Blog', href: '/blog' }].map((item) => (
+            {[...mainLinks, ...serviceLinks, { label: 'О нас', href: '/about' }, { label: 'Блог', href: '/blog' }].map((item) => (
               <Link 
                 key={item.href} 
                 href={item.href} 
