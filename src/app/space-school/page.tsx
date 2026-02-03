@@ -150,7 +150,7 @@ const SchoolTypes = () => (
            <RevealOnScroll>
             <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <Image 
-                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1000" 
+                  src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1000" 
                   alt="School in Spain" 
                   width={800}
                   height={1000}

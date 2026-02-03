@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   images: {
+    unoptimized: true, // Disable server-side optimization to fix timeouts in restricted networks
     remotePatterns: [
       {
         protocol: 'https',

@@ -59,7 +59,7 @@ const WhatIsIt = () => (
           <div className="flex-1 relative">
              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-500">
               <Image 
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1000" 
                 alt="Documents processing" 
                 width={600}
                 height={800}
