@@ -26,10 +26,10 @@ const Navbar = () => {
   ];
 
   const serviceLinks = [
-    { label: 'Курсы (Courses)', href: '/space-courses' },
-    { label: 'Репетиторство (Tutoring)', href: '/space-tutoring' },
-    { label: 'Коучинг (Coaching)', href: '/space-coaching' },
-    { label: 'Омологация (Homologation)', href: '/space-omission' },
+    { label: 'Курсы', href: '/space-courses' },
+    { label: 'Репетиторство', href: '/space-tutoring' },
+    { label: 'Коучинг', href: '/space-coaching' },
+    { label: 'Омологация', href: '/space-omission' },
   ];
 
   useEffect(() => {

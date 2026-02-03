@@ -138,7 +138,7 @@ const CoreValues = () => (
               <span>Сервис</span>
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-              Мультиязычность и Полное сопровождение
+              Мультиязычность и полное сопровождение
             </h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
