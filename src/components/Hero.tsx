@@ -1,6 +1,5 @@
 import React from 'react';
-import { Star, ChevronRight, ShieldCheck, GraduationCap, Users } from 'lucide-react';
-import RevealOnScroll from './RevealOnScroll';
+import { Star, ChevronRight, ShieldCheck, GraduationCap, Users, Mouse, ChevronDown } from 'lucide-react';
 import Starfield from './Starfield';
 
 const Hero = () => (
@@ -9,6 +8,9 @@ const Hero = () => (
     <div className="absolute inset-0 bg-[#020617]"></div>
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
     <Starfield />
+    
+    {/* Bottom Gradient Fade */}
+    <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#020617] to-transparent z-10 pointer-events-none"></div>
     
     <div className="container mx-auto px-6 relative z-10 text-center">
       <div className="animate-cinematic">
@@ -20,7 +22,7 @@ const Hero = () => (
           <span className="block mb-2 text-3xl md:text-6xl lg:text-7xl font-bold text-gray-100">
             ОБУЧЕНИЕ В ИСПАНИИ
           </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 drop-shadow-[0_0_35px_rgba(6,182,212,0.3)]">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-500 to-purple-600 drop-shadow-[0_0_35px_rgba(6,182,212,0.3)] animate-text-shimmer">
             ПОСТУПЛЕНИЕ С ГАРАНТИЕЙ
           </span>
         </h1>
@@ -53,6 +55,12 @@ const Hero = () => (
           </div>
         ))}
       </div>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+      <Mouse className="w-6 h-6 text-gray-400" />
+      <ChevronDown className="w-4 h-4 text-cyan-400 animate-bounce" />
     </div>
   </section>
 );
