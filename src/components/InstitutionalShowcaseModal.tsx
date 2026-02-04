@@ -33,6 +33,22 @@ const INSTITUTIONS: Institution[] = [
     type: 'university',
     tags: ["Право", "Политология", "История"]
   },
+  {
+    name: "Universidad Autónoma de Madrid",
+    location: "Мадрид",
+    ranking: "Лидер по научным исследованиям",
+    image: "https://images.unsplash.com/photo-1592280771190-3e2e4d571952?auto=format&fit=crop&q=80&w=600",
+    type: 'university',
+    tags: ["Физика", "Биология", "Государственный"]
+  },
+  {
+    name: "Universidad de Navarra",
+    location: "Памплона / Мадрид",
+    ranking: "Лучший частный вуз Испании",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=600",
+    type: 'university',
+    tags: ["Бизнес", "Медицина", "Частный"]
+  },
   // Business Schools
   {
     name: "IE University / IE Business School",
@@ -50,12 +66,20 @@ const INSTITUTIONS: Institution[] = [
     type: 'business',
     tags: ["Executive MBA", "Лидерство", "Премиум"]
   },
+  {
+    name: "ESADE Business School",
+    location: "Барселона",
+    ranking: "Мировой лидер бизнес-образования",
+    image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600",
+    type: 'business',
+    tags: ["Финансы", "Право", "Интернациональность"]
+  },
   // Private Schools
   {
     name: "King's College",
     location: "Мадрид / Аликанте",
     ranking: "Лучшая британская школа",
-    image: "https://images.unsplash.com/photo-1580582867595-49c1199ed279?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=800",
     type: 'school',
     tags: ["British System", "IB", "Элитная"]
   },
@@ -63,9 +87,25 @@ const INSTITUTIONS: Institution[] = [
     name: "American School of Barcelona",
     location: "Барселона",
     ranking: "Лидер американского образования",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=800",
     type: 'school',
     tags: ["USA System", "Баскетбол", "Технологии"]
+  },
+  {
+    name: "British Council School",
+    location: "Мадрид",
+    ranking: "Первая билингвальная школа",
+    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800",
+    type: 'school',
+    tags: ["Bilingual", "Культура", "Престиж"]
+  },
+  {
+    name: "Sotogrande International School",
+    location: "Кадис",
+    ranking: "Топ-10 Apple Distinguished School",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800",
+    type: 'school',
+    tags: ["IB", "Спорт", "Пансион"]
   }
 ];
 
