@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, ChevronRight, ShieldCheck, GraduationCap, Users, Mouse, ChevronDown } from 'lucide-react';
 import Starfield from './Starfield';
+import LogoMarquee from './ui/LogoMarquee';
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -41,7 +42,9 @@ const Hero = () => (
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
+      <LogoMarquee />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
 
         {[
           { icon: <ShieldCheck />, title: "100% Гарантия", desc: "Возвращаем деньги, если вы не поступите" },

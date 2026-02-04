@@ -5,12 +5,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     unoptimized: true, // Disable server-side optimization to fix timeouts in restricted networks
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'images.unsplash.com',
+        },
+      ],
   },
 };
 
