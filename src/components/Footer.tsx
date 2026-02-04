@@ -14,7 +14,7 @@ const Footer = () => (
               className="h-16 w-auto" 
             />
           </Link>
-          <p className="text-gray-500 text-sm">Ваш надежный проводник в мире испанского образования. Профессионально, быстро, с гарантией.</p>
+          <p className="text-gray-500 text-sm">SpaceForEdu.com - ваш надежный проводник в мире испанского образования. Профессионально, быстро, с гарантией.</p>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 w-full lg:w-auto">
