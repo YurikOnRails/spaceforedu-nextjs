@@ -1,82 +1,99 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection from '../../components/PricingSection';
 import FAQSection from '../../components/FAQSection';
+import ContactModal from '../../components/ContactModal';
+import ChancesCalculatorModal from '../../components/ChancesCalculatorModal';
 import { 
   GraduationCap, 
-  BookOpen, 
   Landmark, 
   Briefcase, 
   Globe, 
   Award,
   ScrollText,
   Compass,
-  ArrowRight
+  ArrowRight,
+  Calculator
 } from 'lucide-react';
 import Image from 'next/image';
 
-const UniversityHero = () => (
-  <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-[#020617]"></div>
-    <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
-    
-    <div className="container mx-auto px-6 relative z-10">
-      <div className="flex flex-col lg:flex-row items-center gap-12">
-        <div className="flex-1 text-center lg:text-left">
-          <RevealOnScroll>
-            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-cyan-400 text-sm mb-8">
-              <Landmark className="w-4 h-4" />
-              <span>Высшее образование в Европе</span>
-            </div>
-            <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
-              УНИВЕРСИТЕТЫ<br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
-                ИСПАНИИ
-              </span>
-            </h1>
-            <p className="text-gray-400 text-xl max-w-xl mx-auto lg:mx-0 mb-10">
-              Ваш диплом — это пропуск в глобальную карьеру. Мы поможем поступить в топовые государственные и частные вузы, даже если вы не знаете испанский.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-cyan-500/20 cursor-pointer">
-                Подобрать ВУЗ
-                <ArrowRight size={20} />
-              </button>
-              <button className="border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all cursor-pointer">
-                Узнать шансы
-              </button>
-            </div>
-          </RevealOnScroll>
-        </div>
-        
-        <div className="flex-1 relative hidden lg:block">
-          <RevealOnScroll>
-            <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
-              <Image 
-                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1200" 
-                alt="Students walking in university campus" 
-                width={600}
-                height={800}
-                className="w-full h-auto object-cover"
-                unoptimized={true}
-              />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500 rounded-full blur-2xl opacity-20"></div>
-            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-500 rounded-full blur-2xl opacity-20"></div>
-          </RevealOnScroll>
+const UniversityHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+
+  return (
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-[#020617]"></div>
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex-1 text-center lg:text-left">
+            <RevealOnScroll>
+              <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-cyan-400 text-sm mb-8">
+                <Landmark className="w-4 h-4" />
+                <span>Высшее образование в Европе</span>
+              </div>
+              <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
+                УНИВЕРСИТЕТЫ<br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                  ИСПАНИИ
+                </span>
+              </h1>
+              <p className="text-gray-400 text-xl max-w-xl mx-auto lg:mx-0 mb-10">
+                Ваш диплом — это пропуск в глобальную карьеру. Мы поможем поступить в топовые государственные и частные вузы, даже если вы не знаете испанский.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-cyan-500/20 cursor-pointer"
+                >
+                  Подобрать ВУЗ
+                  <ArrowRight size={20} />
+                </button>
+                <button 
+                  onClick={() => setIsCalculatorOpen(true)}
+                  className="border border-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Calculator size={20} className="text-cyan-400" />
+                  Узнать шансы
+                </button>
+              </div>
+            </RevealOnScroll>
+          </div>
+          
+          <div className="flex-1 relative hidden lg:block">
+            <RevealOnScroll>
+              <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500">
+                <Image 
+                  src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Students walking in university campus" 
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                  unoptimized={true}
+                />
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500 rounded-full blur-2xl opacity-20"></div>
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-500 rounded-full blur-2xl opacity-20"></div>
+            </RevealOnScroll>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+      
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ChancesCalculatorModal isOpen={isCalculatorOpen} onClose={() => setIsCalculatorOpen(false)} />
+    </section>
+  );
+};
 
 const Features = () => (
   <section className="py-24 relative">
