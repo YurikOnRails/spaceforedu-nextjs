@@ -47,7 +47,7 @@ const LeadForm = ({ className = "", onSuccess }: LeadFormProps) => {
           type="text" 
           required
           className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="Иван Иванов" 
+          placeholder="Илон Маск" 
         />
         {state.errors?.name && <p className="text-red-400 text-sm ml-1">{state.errors.name[0]}</p>}
       </div>
@@ -60,7 +60,7 @@ const LeadForm = ({ className = "", onSuccess }: LeadFormProps) => {
           type="tel" 
           required
           className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="+7 (999) 000-00-00" 
+          placeholder="+34 (777) 000-000" 
         />
         {state.errors?.phone && <p className="text-red-400 text-sm ml-1">{state.errors.phone[0]}</p>}
       </div>

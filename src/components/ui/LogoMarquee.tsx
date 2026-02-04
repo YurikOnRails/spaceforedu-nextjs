@@ -9,27 +9,26 @@ const LOGOS = [
 
 const LogoMarquee = () => {
   return (
-    <div className="w-full overflow-hidden relative mt-16 mb-8">
-      <div className="relative flex overflow-x-hidden group">
+    <div className="w-full relative mt-16 mb-8 overflow-hidden">
+      {/* Modern Masking approach using CSS Mask Image */}
+      <div 
+        className="relative flex overflow-x-hidden group [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+      >
         <div className="flex animate-marquee whitespace-nowrap py-4 items-center">
           {/* Repeat the logo set multiple times for smooth infinite scrolling */}
           {[...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
-            <div key={i} className="relative w-40 h-20 mx-8 flex items-center justify-center shrink-0">
+            <div key={i} className="relative w-24 h-10 md:w-40 md:h-20 mx-6 md:mx-8 flex items-center justify-center shrink-0">
                 <Image
                   src={logo.url}
                   alt={logo.name}
                   fill
-                  className="object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-all duration-300"
-                  sizes="(max-width: 768px) 100px, 160px"
+                  className="object-contain brightness-0 invert opacity-40 hover:opacity-100 transition-all duration-300"
+                  sizes="(max-width: 768px) 96px, 160px"
                   unoptimized={true}
                 />
             </div>
           ))}
         </div>
-
-        {/* Gradient Masks */}
-        <div className="absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none"></div>
       </div>
     </div>
   );
