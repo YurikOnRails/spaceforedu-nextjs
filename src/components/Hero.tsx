@@ -1,16 +1,17 @@
 import React from 'react';
 import { Star, ChevronRight, ShieldCheck, GraduationCap, Users } from 'lucide-react';
 import RevealOnScroll from './RevealOnScroll';
+import Starfield from './Starfield';
 
 const Hero = () => (
   <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     {/* Background elements */}
     <div className="absolute inset-0 bg-[#020617]"></div>
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+    <Starfield />
     
     <div className="container mx-auto px-6 relative z-10 text-center">
-      <RevealOnScroll>
+      <div className="animate-cinematic">
         <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-cyan-400 text-sm mb-8">
           <Star className="w-4 h-4 fill-cyan-400" />
           <span>№1 Агентство по образованию в Испании</span>
@@ -23,11 +24,11 @@ const Hero = () => (
             ПОСТУПЛЕНИЕ С ГАРАНТИЕЙ
           </span>
         </h1>
-        <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
+        <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12 opacity-0 animate-[fadeIn_1s_ease-out_1.5s_forwards]">
           Полное сопровождение в лучшие государственные и частные вузы Испании. 
           Мы берем на себя всю бюрократию, пока вы готовитесь к новой жизни.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-[fadeIn_1s_ease-out_2s_forwards]">
           <button className="bg-cyan-500 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-all flex items-center justify-center gap-2 group shadow-xl hover:shadow-cyan-500/20 cursor-pointer">
             Бесплатная консультация
             <ChevronRight className="group-hover:translate-x-1 transition-transform" />
@@ -36,9 +37,10 @@ const Hero = () => (
             Посмотреть вузы
           </button>
         </div>
-      </RevealOnScroll>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-24">
+
         {[
           { icon: <ShieldCheck />, title: "100% Гарантия", desc: "Возвращаем деньги, если вы не поступите" },
           { icon: <GraduationCap />, title: "200+ ВУЗов", desc: "Доступ ко всем учебным заведениям Испании" },
