@@ -30,7 +30,7 @@ const Footer = () => (
           <div>
             <h4 className="text-white font-bold mb-6">Услуги</h4>
             <div className="flex flex-col gap-3 text-gray-500 text-sm">
-              <Link href="/space-pro" className="hover:text-cyan-400 transition-colors">Для бизнеса (AI)</Link>
+              <Link href="/space-pro" className="hover:text-cyan-400 transition-colors">AI для бизнеса</Link>
               <Link href="/space-coaching" className="hover:text-cyan-400 transition-colors">Коучинг</Link>
               <Link href="/space-omission" className="hover:text-cyan-400 transition-colors">Омологация</Link>
               <Link href="/space-school" className="hover:text-cyan-400 transition-colors">Визовая поддержка</Link>

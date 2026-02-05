@@ -35,7 +35,7 @@ const ProHero = () => {
       <div className="container mx-auto px-6 relative z-10 text-center">
         <RevealOnScroll>
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-blue-400 text-sm mb-8">
-            <Bot className="w-4 h-4" />
+            <Zap className="w-4 h-4" />
             <span>Business Space</span>
           </div>
           <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
@@ -257,10 +257,42 @@ export default function SpacePro() {
       <Navbar />
       <ProHero />
       <Solutions />
+      
+      {/* Capabilities Section */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-6">
+          <RevealOnScroll>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+                Закажи эту программу, если <span className="text-blue-400">актуально:</span>
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: <Zap size={24} />, text: "Автоматизировать рутинные задачи" },
+                { icon: <Database size={24} />, text: "Анализировать большие объемы данных" },
+                { icon: <TrendingUp size={24} />, text: "Быстро принимать решения" },
+                { icon: <Users size={24} />, text: "Персонализированный маркетинг" },
+                { icon: <Briefcase size={24} />, text: "Улучшить производственные процессы" },
+                { icon: <ShieldCheck size={24} />, text: "Обеспечить безопасность данных" }
+              ].map((item, i) => (
+                <div key={i} className="bg-white/5 border border-white/10 p-6 rounded-xl flex items-center gap-4 hover:bg-white/10 transition-colors group">
+                  <div className="text-cyan-400 bg-cyan-500/10 p-3 rounded-lg group-hover:bg-cyan-500 group-hover:text-white transition-all">
+                    {item.icon}
+                  </div>
+                  <span className="text-white font-medium">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </RevealOnScroll>
+        </div>
+      </section>
+
       <InfoBlocks />
       <PricingSection
         id="Тарифы"
-        title="Курсы для"
+        title="Для"
         highlightedWord="бизнеса"
         subtitle="Выберите курс, который изменит ваше будущее"
         plans={plans}
