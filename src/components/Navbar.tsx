@@ -8,6 +8,8 @@ import ContactModal from './ContactModal';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [language, setLanguage] = useState('RU');
   const [isLangMenuOpen, setIsLangMenuOpen] = useState(false);
@@ -35,19 +37,45 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Determine if scrolled (for background style)
+      setIsScrolled(currentScrollY > 20);
+
+      // Determine visibility (hide on scroll down, show on scroll up)
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past threshold -> Hide
+        setIsVisible(false);
+      } else {
+        // Scrolling up -> Show
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-6'}`}>
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 transform ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      } ${
+        isScrolled 
+          ? 'bg-[#020617]/90 backdrop-blur-xl border-b border-white/10 shadow-lg py-4 lg:py-3' 
+          : 'bg-transparent py-4 lg:py-6'
+      }`}
+      style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
+    >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2 group cursor-pointer">
           <img 
             src="/logo.png" 
             alt="SpaceForEdu Logo" 
-            className="h-16 w-auto" 
+            className="h-10 md:h-16 w-auto transition-all duration-300" 
           />
         </Link>
 
