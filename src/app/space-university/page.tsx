@@ -18,7 +18,9 @@ import {
   ScrollText,
   Compass,
   ArrowRight,
-  Calculator
+  Calculator,
+  Mouse,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -27,7 +29,7 @@ const UniversityHero = () => {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-transparent"></div>
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[100px]"></div>
@@ -81,7 +83,6 @@ const UniversityHero = () => {
                   unoptimized={true}
                 />
               </div>
-              {/* Decorative elements */}
               <div className="absolute -top-10 -right-10 w-24 h-24 bg-cyan-500 rounded-full blur-2xl opacity-20"></div>
               <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-500 rounded-full blur-2xl opacity-20"></div>
             </RevealOnScroll>
@@ -89,6 +90,12 @@ const UniversityHero = () => {
         </div>
       </div>
       
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+        <Mouse className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-4 h-4 text-cyan-400 animate-bounce" />
+      </div>
+
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <ChancesCalculatorModal isOpen={isCalculatorOpen} onClose={() => setIsCalculatorOpen(false)} />
     </section>

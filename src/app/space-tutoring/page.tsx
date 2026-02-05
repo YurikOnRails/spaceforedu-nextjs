@@ -17,12 +17,14 @@ import {
   ArrowRight,
   Pencil,
   Sparkles,
-  Target
+  Target,
+  Mouse,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 
 const TutoringHero = () => (
-  <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     <div className="absolute inset-0 bg-transparent"></div>
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-pulse"></div>
     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
@@ -43,12 +45,21 @@ const TutoringHero = () => (
           Обеспечим вашему ребенку эффективную дополнительную помощь и поддержку в учебе.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-indigo-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-indigo-500/20 cursor-pointer">
+          <a 
+            href="#Contact"
+            className="bg-indigo-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-indigo-500/20 cursor-pointer"
+          >
             ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
             <ArrowRight size={20} />
-          </button>
+          </a>
         </div>
       </RevealOnScroll>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+      <Mouse className="w-6 h-6 text-gray-400" />
+      <ChevronDown className="w-4 h-4 text-pink-400 animate-bounce" />
     </div>
   </section>
 );

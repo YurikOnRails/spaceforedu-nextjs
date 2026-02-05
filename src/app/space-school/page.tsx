@@ -15,12 +15,14 @@ import {
   School, 
   BrainCircuit,
   Languages,
-  ArrowRight
+  ArrowRight,
+  Mouse,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 
 const SchoolHero = () => (
-  <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     <div className="absolute inset-0 bg-transparent"></div>
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse"></div>
     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
@@ -47,6 +49,12 @@ const SchoolHero = () => (
           </button>
         </div>
       </RevealOnScroll>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+      <Mouse className="w-6 h-6 text-gray-400" />
+      <ChevronDown className="w-4 h-4 text-purple-400 animate-bounce" />
     </div>
   </section>
 );
@@ -155,6 +163,7 @@ const SchoolTypes = () => (
                   width={800}
                   height={1000}
                   className="w-full h-auto object-cover"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                 <div className="absolute bottom-8 left-8 right-8">

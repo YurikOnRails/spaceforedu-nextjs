@@ -11,12 +11,14 @@ import {
   Globe, 
   Users, 
   Heart,
-  ArrowRight
+  ArrowRight,
+  Mouse,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 
 const AboutHero = () => (
-  <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
     <div className="absolute inset-0 bg-transparent"></div>
     {/* Navy & Gold Theme */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-800/30 rounded-full blur-[120px] animate-pulse"></div>
@@ -45,6 +47,12 @@ const AboutHero = () => (
           </button>
         </div>
       </RevealOnScroll>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+      <Mouse className="w-6 h-6 text-gray-400" />
+      <ChevronDown className="w-4 h-4 text-amber-400 animate-bounce" />
     </div>
   </section>
 );
