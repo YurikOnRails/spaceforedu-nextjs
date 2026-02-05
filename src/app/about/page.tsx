@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
+import ContactModal from '../../components/ContactModal';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection from '../../components/PricingSection';
@@ -17,45 +18,54 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
-const AboutHero = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-transparent"></div>
-    {/* Navy & Gold Theme */}
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-800/30 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[100px]"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
-    
-    <div className="container mx-auto px-6 relative z-10 text-center">
-      <RevealOnScroll>
-        <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-amber-400 text-sm mb-8">
-          <ShieldCheck className="w-4 h-4" />
-          <span>Ваш надежный партнер</span>
-        </div>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight">
-          ОБРАЗОВАНИЕ В ИСПАНИИ<br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">
-            С ГАРАНТИЕЙ БЕЗОПАСНОСТИ
-          </span>
-        </h1>
-        <p className="text-gray-400 text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
-          Наша цель - быть вашим надежным партнером в выборе будущего ваших детей при поступлении в школы, вузы и переезде в Испанию.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-amber-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-amber-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-amber-500/20 cursor-pointer">
-            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
-            <ArrowRight size={20} />
-          </button>
-        </div>
-      </RevealOnScroll>
-    </div>
+const AboutHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    {/* Scroll Indicator */}
-    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
-      <Mouse className="w-6 h-6 text-gray-400" />
-      <ChevronDown className="w-4 h-4 text-amber-400 animate-bounce" />
-    </div>
-  </section>
-);
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-transparent"></div>
+      {/* Navy & Gold Theme */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-800/30 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[100px]"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+      
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        <RevealOnScroll>
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-amber-400 text-sm mb-8">
+            <ShieldCheck className="w-4 h-4" />
+            <span>Ваш надежный партнер</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight">
+            ОБРАЗОВАНИЕ В ИСПАНИИ<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600">
+              С ГАРАНТИЕЙ БЕЗОПАСНОСТИ
+            </span>
+          </h1>
+          <p className="text-gray-400 text-xl max-w-3xl mx-auto mb-12 leading-relaxed">
+            Наша цель - быть вашим надежным партнером в выборе будущего ваших детей при поступлении в школы, вузы и переезде в Испанию.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-amber-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-amber-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-amber-500/20 cursor-pointer"
+            >
+              ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        </RevealOnScroll>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+        <Mouse className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-4 h-4 text-amber-400 animate-bounce" />
+      </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </section>
+  );
+};
 
 const GlobalReach = () => {
   const countries = [
