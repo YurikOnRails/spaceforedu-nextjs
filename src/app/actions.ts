@@ -8,6 +8,7 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const FormSchema = z.object({
   name: z.string().min(2, "Имя должно содержать минимум 2 символа"),
   phone: z.string().min(6, "Введите корректный номер телефона"),
+  service: z.string().min(1, "Выберите услугу"),
   message: z.string().optional(),
 });
 
@@ -17,6 +18,7 @@ export type FormState = {
   errors?: {
     name?: string[];
     phone?: string[];
+    service?: string[];
     message?: string[];
   };
 };
@@ -26,6 +28,7 @@ export async function sendTelegramMessage(prevState: FormState, formData: FormDa
   const validatedFields = FormSchema.safeParse({
     name: formData.get("name"),
     phone: formData.get("phone"),
+    service: formData.get("service"),
     message: formData.get("message"),
   });
 
@@ -37,7 +40,16 @@ export async function sendTelegramMessage(prevState: FormState, formData: FormDa
     };
   }
 
-  const { name, phone, message } = validatedFields.data;
+  const { name, phone, service, message } = validatedFields.data;
+
+  // Map service IDs to readable names
+  const serviceMap: Record<string, string> = {
+    university: "🎓 ВУЗы Испании",
+    school: "🏫 Частные школы",
+    business: "⚡ Business Space (AI)",
+    courses: "🗣️ Языковые курсы",
+    other: "📂 Другое"
+  };
 
   // 2. Format message for Telegram
   const text = `
@@ -45,6 +57,7 @@ export async function sendTelegramMessage(prevState: FormState, formData: FormDa
 
 👤 *Имя:* ${name}
 📞 *Телефон:* ${phone}
+🎯 *Услуга:* ${serviceMap[service] || service}
 📝 *Сообщение:*
 ${message || "Без комментария"}
 

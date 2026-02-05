@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useActionState } from 'react';
-import { Loader2, CheckCircle } from 'lucide-react';
+import { Loader2, CheckCircle2, ArrowRight, AlertCircle } from 'lucide-react';
 import { sendTelegramMessage } from '../app/actions';
 
 interface LeadFormProps {
@@ -20,82 +20,140 @@ const LeadForm = ({ className = "", onSuccess }: LeadFormProps) => {
     if (state.success && onSuccess) {
       const timer = setTimeout(() => {
         onSuccess();
-      }, 3000); // Optional: close after 3 seconds or just let the user see the success message
+      }, 3000); 
       return () => clearTimeout(timer);
     }
   }, [state.success, onSuccess]);
 
   if (state.success) {
     return (
-      <div className={`h-full flex flex-col items-center justify-center text-center animate-fadeIn ${className}`}>
-        <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mb-6">
-          <CheckCircle className="text-green-500 w-10 h-10" />
+      <div className={`h-full flex flex-col items-center justify-center text-center animate-fadeIn py-10 ${className}`}>
+        <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+          <CheckCircle2 className="text-emerald-500 w-10 h-10" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">Заявка отправлена!</h3>
-        <p className="text-gray-400">{state.message}</p>
+        <h3 className="text-2xl font-bold text-white mb-2">Заявка принята!</h3>
+        <p className="text-gray-400 max-w-xs mx-auto mb-6">{state.message}</p>
+        <div className="text-sm text-gray-500">
+           Менеджер свяжется с вами в ближайшее время
+        </div>
       </div>
     );
   }
 
   return (
-    <form action={formAction} className={`space-y-6 ${className}`}>
-      <div className="space-y-2">
-        <label htmlFor="name" className="text-gray-400 text-sm ml-1">Как вас зовут?</label>
-        <input 
-          id="name"
-          name="name"
-          type="text" 
-          required
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="Юрий Гагарин" 
-        />
-        {state.errors?.name && <p className="text-red-400 text-sm ml-1">{state.errors.name[0]}</p>}
+    <form action={formAction} className={`space-y-5 ${className}`}>
+      
+      {/* Service Selection */}
+      <div className="space-y-1.5">
+        <label htmlFor="service" className="text-slate-400 text-xs font-bold uppercase tracking-wider ml-1">Что вас интересует?</label>
+        <div className="relative group">
+          <select 
+            id="service"
+            name="service"
+            required
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all appearance-none cursor-pointer hover:border-white/20"
+          >
+            <option value="" className="bg-[#0f172a] text-gray-500">Выберите направление...</option>
+            <option value="university" className="bg-[#0f172a]">ВУЗы Испании (Бакалавриат/Магистратура)</option>
+            <option value="school" className="bg-[#0f172a]">Частные школы и колледжи</option>
+            <option value="business" className="bg-[#0f172a]">Business Space (AI & Startups)</option>
+            <option value="courses" className="bg-[#0f172a]">Языковые курсы</option>
+            <option value="other" className="bg-[#0f172a]">Другой вопрос</option>
+          </select>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Info Group */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-1.5">
+          <label htmlFor="name" className="text-slate-400 text-xs font-bold uppercase tracking-wider ml-1">Имя</label>
+          <input 
+            id="name"
+            name="name"
+            type="text" 
+            required
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all hover:border-white/20" 
+            placeholder="Юрий Гагарин" 
+          />
+          {state.errors?.name && (
+            <div className="flex items-center gap-1.5 text-red-400 text-xs ml-1 mt-1 animate-fadeIn">
+              <AlertCircle size={12} />
+              {state.errors.name[0]}
+            </div>
+          )}
+        </div>
+        
+        <div className="space-y-1.5">
+          <label htmlFor="phone" className="text-slate-400 text-xs font-bold uppercase tracking-wider ml-1">Телефон / WhatsApp</label>
+          <input 
+            id="phone"
+            name="phone"
+            type="tel" 
+            required
+            className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all hover:border-white/20" 
+            placeholder="+34..." 
+          />
+          {state.errors?.phone && (
+             <div className="flex items-center gap-1.5 text-red-400 text-xs ml-1 mt-1 animate-fadeIn">
+             <AlertCircle size={12} />
+             {state.errors.phone[0]}
+           </div>
+          )}
+        </div>
       </div>
       
-      <div className="space-y-2">
-        <label htmlFor="phone" className="text-gray-400 text-sm ml-1">Номер телефона</label>
-        <input 
-          id="phone"
-          name="phone"
-          type="tel" 
-          required
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="+34 (777) 000-000" 
-        />
-        {state.errors?.phone && <p className="text-red-400 text-sm ml-1">{state.errors.phone[0]}</p>}
-      </div>
-      
-      <div className="space-y-2">
-        <label htmlFor="message" className="text-gray-400 text-sm ml-1">Ваше сообщение</label>
+      {/* Message Area */}
+      <div className="space-y-1.5">
+        <label htmlFor="message" className="text-slate-400 text-xs font-bold uppercase tracking-wider ml-1">Комментарий</label>
         <textarea 
           id="message"
           name="message"
-          rows={4} 
-          className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="Меня интересует бакалавриат в Мадриде..."
+          rows={3} 
+          className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all resize-none hover:border-white/20" 
+          placeholder="Например: хочу поступить на архитектуру..."
         ></textarea>
       </div>
 
+      {/* Global Error Message */}
       {state.message && !state.success && (
-        <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm">
-          {state.message}
+        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-start gap-2 text-red-400 text-sm">
+          <AlertCircle size={16} className="shrink-0 mt-0.5" />
+          <span>{state.message}</span>
         </div>
       )}
 
+      {/* Submit Button */}
       <button 
         type="submit" 
         disabled={isPending}
-        className="w-full bg-cyan-500 py-5 rounded-xl text-white font-bold hover:bg-cyan-600 transition-all shadow-lg shadow-cyan-500/30 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="group w-full relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white py-5 rounded-xl font-bold text-lg transition-all shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed disabled:shadow-none"
       >
-        {isPending ? (
-          <>
-            <Loader2 className="animate-spin" size={20} />
-            Отправка...
-          </>
-        ) : (
-          "Отправить заявку"
-        )}
+        <span className="relative z-10 flex items-center justify-center gap-2">
+          {isPending ? (
+            <>
+              <Loader2 className="animate-spin" size={20} />
+              Отправляем...
+            </>
+          ) : (
+            <>
+              Получить стратегию поступления
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </>
+          )}
+        </span>
+        
+        {/* Shine Effect */}
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"></div>
       </button>
+      
+      <p className="text-center text-xs text-slate-500 mt-4">
+        Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+      </p>
     </form>
   );
 };

@@ -51,7 +51,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         {/* Body */}
         <div className="p-6 sm:p-8">
           <p className="text-gray-300 mb-8 text-base leading-relaxed">
-            Получите бесплатный план зачисления и список подходящих заведений. Мы <span className="text-cyan-400 font-bold">гарантируем поступление</span> или вернем деньги.
+            Мы <span className="text-cyan-400 font-bold">гарантируем поступление</span> или вернем деньги.
           </p>
           <LeadForm onSuccess={onClose} />
         </div>
