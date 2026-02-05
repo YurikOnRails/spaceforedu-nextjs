@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
@@ -23,7 +25,7 @@ const Services = () => {
             <RevealOnScroll>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">
                 Наши профессиональные <br />
-                <span className="text-cyan-400">услуги для вас</span>
+                <span className="text-cyan-400">услуги</span>
               </h2>
               <p className="text-gray-400 mb-12 text-lg">
                 Мы разработали уникальную систему сопровождения, которая минимизирует риски отказа и делает процесс переезда легким и понятным.

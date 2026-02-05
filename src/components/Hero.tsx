@@ -38,20 +38,21 @@ const Hero = () => {
             Полное сопровождение в лучшие государственные и частные вузы Испании. 
             Мы берем на себя всю бюрократию, пока вы готовитесь к новой жизни.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-[fadeIn_0.8s_ease-out_0.6s_forwards]">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center w-full max-w-sm sm:max-w-none mx-auto opacity-0 animate-[fadeIn_0.8s_ease-out_0.6s_forwards]">
             <button 
               onClick={() => setIsContactOpen(true)}
-              className="bg-cyan-500 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-all flex items-center justify-center gap-2 group shadow-xl hover:shadow-cyan-500/20 cursor-pointer"
+              className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 group cursor-pointer active:scale-95 transform duration-200"
             >
               Бесплатная консультация
-              <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={() => setIsCalculatorOpen(true)}
-              className="bg-white/5 border border-white/20 text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all cursor-pointer flex items-center justify-center gap-2 group backdrop-blur-sm"
+              className="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-bold text-base sm:text-lg hover:bg-white/10 transition-all cursor-pointer flex items-center justify-center gap-2 group backdrop-blur-md active:scale-95 transform duration-200 hover:border-white/20"
             >
               <Calculator className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
-              Рассчитать шансы (1 мин)
+              <span>Рассчитать шансы</span>
+              <span className="text-white/40 text-xs sm:text-sm font-normal">(1 мин)</span>
             </button>
           </div>
         </div>
@@ -61,7 +62,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 opacity-0 animate-[fadeIn_1s_ease-out_0.8s_forwards]">
 
           {[
-            { icon: <ShieldCheck />, title: "100% Гарантия", desc: "Возвращаем деньги, если вы не поступите" },
+            { icon: <ShieldCheck />, title: "12+ лет опыта", desc: "Возвращаем деньги, если вы не поступите" },
             { icon: <GraduationCap />, title: "200+ ВУЗов", desc: "Доступ ко всем учебным заведениям Испании" },
             { icon: <Users />, title: "500+ Студентов", desc: "Успешно зачислены в этом году" }
           ].map((item, i) => (

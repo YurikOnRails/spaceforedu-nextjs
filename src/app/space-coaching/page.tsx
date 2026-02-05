@@ -37,7 +37,7 @@ const CoachingHero = () => {
         <RevealOnScroll>
           <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-amber-400 text-sm mb-8">
             <Sparkles className="w-4 h-4" />
-            <span>Тренируем таланты детей и подростков</span>
+            <span>Раскрываем таланты детей и подростков</span>
           </div>
           <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
             PROFESSIONAL<br />

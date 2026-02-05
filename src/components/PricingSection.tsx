@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Section } from './ui/Section';
 import RevealOnScroll from './RevealOnScroll';

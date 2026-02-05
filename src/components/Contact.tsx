@@ -72,7 +72,7 @@ const Contact = () => {
                   Заполните форму, и мы составим для вас <span className="text-white font-medium">персональный план поступления</span>. Это бесплатно и ни к чему вас не обязывает.
                 </p>
               </div>
-              <LeadForm />
+              <LeadForm withHeader={false} />
             </div>
           </div>
         </div>
