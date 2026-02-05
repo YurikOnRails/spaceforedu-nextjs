@@ -30,10 +30,10 @@ const Navbar = () => {
   ];
 
   const serviceLinks = [
-    { label: 'Курсы', href: '/space-courses' },
+    { label: 'Курсы испанского языка', href: '/space-courses' },
     { label: 'Репетиторство', href: '/space-tutoring' },
     { label: 'Коучинг', href: '/space-coaching' },
-    { label: 'Омологация', href: '/space-omission' },
+    { label: 'Омологация дипломов', href: '/space-omission' },
   ];
 
   useEffect(() => {

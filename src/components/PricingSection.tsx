@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Section } from './ui/Section';
 import RevealOnScroll from './RevealOnScroll';
 import { CheckCircle2 } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 export interface Plan {
   name: string;
@@ -30,6 +31,7 @@ const PricingSection = ({
   accentColor = "cyan",
   buttonText = "Выбрать план"
 }: PricingSectionProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Dynamic classes based on accent color
   const getCardStyles = (isAccent: boolean) => {
@@ -93,13 +95,17 @@ const PricingSection = ({
                   </div>
                 ))}
               </div>
-              <button className={`w-full py-4 rounded-xl font-bold transition-all cursor-pointer ${getButtonStyles(plan.accent)}`}>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className={`w-full py-4 rounded-xl font-bold transition-all cursor-pointer ${getButtonStyles(plan.accent)}`}
+              >
                 {buttonText}
               </button>
             </div>
           </RevealOnScroll>
         ))}
       </div>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </Section>
   );
 };

@@ -1,12 +1,13 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection from '../../components/PricingSection';
 import FAQSection from '../../components/FAQSection';
+import ContactModal from '../../components/ContactModal';
 import { 
   GraduationCap, 
   FileCheck, 
@@ -21,43 +22,52 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
-const SchoolHero = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-transparent"></div>
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-    
-    <div className="container mx-auto px-6 relative z-10 text-center">
-      <RevealOnScroll>
-        <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-purple-400 text-sm mb-8">
-          <School className="w-4 h-4" />
-          <span>Среднее образование в Европе</span>
-        </div>
-        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
-          ШКОЛЫ ИСПАНИИ:<br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
-            ФУНДАМЕНТ БУДУЩЕГО
-          </span>
-        </h1>
-        <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
-          Откройте для своего ребенка двери в лучшие университеты мира. Мы гарантируем поступление в престижные частные и государственные школы Испании, избавляя вас от бюрократии и стресса.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-purple-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-purple-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-purple-500/20 cursor-pointer">
-            Бесплатная консультация
-            <ArrowRight size={20} />
-          </button>
-        </div>
-      </RevealOnScroll>
-    </div>
+const SchoolHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    {/* Scroll Indicator */}
-    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
-      <Mouse className="w-6 h-6 text-gray-400" />
-      <ChevronDown className="w-4 h-4 text-purple-400 animate-bounce" />
-    </div>
-  </section>
-);
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-transparent"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+      
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        <RevealOnScroll>
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-purple-400 text-sm mb-8">
+            <School className="w-4 h-4" />
+            <span>Среднее образование в Европе</span>
+          </div>
+          <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
+            ШКОЛЫ ИСПАНИИ:<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-cyan-400">
+              ФУНДАМЕНТ БУДУЩЕГО
+            </span>
+          </h1>
+          <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
+            Откройте для своего ребенка двери в лучшие университеты мира. Мы гарантируем поступление в престижные частные и государственные школы Испании, избавляя вас от бюрократии и стресса.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="bg-purple-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-purple-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-purple-500/20 cursor-pointer"
+            >
+              Бесплатная консультация
+              <ArrowRight size={20} />
+            </button>
+          </div>
+        </RevealOnScroll>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+        <Mouse className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-4 h-4 text-purple-400 animate-bounce" />
+      </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </section>
+  );
+};
 
 const Steps = () => {
   const steps = [

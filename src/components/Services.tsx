@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 import RevealOnScroll from './RevealOnScroll';
+import ContactModal from './ContactModal';
 
 const Services = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const services = [
     "Сопровождение в государственные вузы под ключ",
     "Профессиональная подготовка к экзаменам",
@@ -28,7 +30,11 @@ const Services = () => {
               </p>
               <div className="space-y-4">
                 {services.map((service, i) => (
-                  <div key={i} className="flex items-center gap-4 group cursor-pointer bg-white/5 p-4 rounded-xl border border-transparent hover:border-cyan-500/30 transition-all">
+                  <div 
+                    key={i} 
+                    onClick={() => setIsModalOpen(true)}
+                    className="flex items-center gap-4 group cursor-pointer bg-white/5 p-4 rounded-xl border border-transparent hover:border-cyan-500/30 transition-all hover:bg-white/10"
+                  >
                     <div className="w-6 h-6 rounded-full border border-cyan-500/50 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-400 group-hover:text-black transition-all">
                       <CheckCircle2 size={16} />
                     </div>
@@ -56,6 +62,7 @@ const Services = () => {
           </div>
         </div>
       </div>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

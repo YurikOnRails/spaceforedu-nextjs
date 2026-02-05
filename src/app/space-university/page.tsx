@@ -9,6 +9,7 @@ import PricingSection from '../../components/PricingSection';
 import FAQSection from '../../components/FAQSection';
 import ContactModal from '../../components/ContactModal';
 import ChancesCalculatorModal from '../../components/ChancesCalculatorModal';
+import InstitutionalShowcaseModal from '../../components/InstitutionalShowcaseModal';
 import { 
   GraduationCap, 
   Landmark, 
@@ -27,6 +28,7 @@ import Image from 'next/image';
 const UniversityHero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const [isShowcaseOpen, setIsShowcaseOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -54,7 +56,7 @@ const UniversityHero = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <button 
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => setIsShowcaseOpen(true)}
                   className="bg-cyan-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-cyan-600 transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-cyan-500/20 cursor-pointer"
                 >
                   Подобрать ВУЗ
@@ -97,6 +99,7 @@ const UniversityHero = () => {
       </div>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <InstitutionalShowcaseModal isOpen={isShowcaseOpen} onClose={() => setIsShowcaseOpen(false)} />
       <ChancesCalculatorModal isOpen={isCalculatorOpen} onClose={() => setIsCalculatorOpen(false)} />
     </section>
   );
