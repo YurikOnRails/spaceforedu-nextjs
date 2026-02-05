@@ -7,7 +7,7 @@ import { Section } from '../../components/ui/Section';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-[#020617] text-white font-sans">
+    <div className="min-h-screen bg-transparent text-white font-sans">
       <Navbar />
       <Section className="pt-32 pb-20">
         <div className="max-w-4xl mx-auto space-y-8 text-gray-300">

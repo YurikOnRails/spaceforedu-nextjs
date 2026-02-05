@@ -20,7 +20,7 @@ const FAQSection = ({ title, highlightedWord, items, accentColor = "text-cyan-40
   const [openIdx, setOpenIdx] = React.useState(0);
 
   return (
-    <Section className="bg-black/30">
+    <Section className="bg-black/60 backdrop-blur-md">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
           {title} {highlightedWord && <span className={accentColor}>{highlightedWord}</span>}

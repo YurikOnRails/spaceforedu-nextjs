@@ -36,6 +36,7 @@ const Starfield: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const targetMouse = useRef({ x: 0, y: 0 });
   const currentMouse = useRef({ x: 0, y: 0 });
+  const scrollY = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -57,9 +58,16 @@ const Starfield: React.FC = () => {
       targetMouse.current = { x: e.clientX, y: e.clientY };
     };
 
+    const handleScroll = () => {
+      scrollY.current = window.scrollY;
+    };
+
     const initStars = (width: number, height: number) => {
       stars = [];
-      const starCount = Math.floor((width * height) / 4500); 
+      const isMobile = width < 768;
+      // Professional tweak: Reduce density on mobile by 40%
+      const densityDivisor = isMobile ? 8000 : 4500;
+      const starCount = Math.floor((width * height) / densityDivisor); 
       
       for (let i = 0; i < starCount; i++) {
         stars.push({
@@ -98,6 +106,9 @@ const Starfield: React.FC = () => {
     };
 
     const spawnMeteor = () => {
+      // Don't spawn meteors if scrolled deep into content
+      if (scrollY.current > 800) return;
+
       const width = window.innerWidth;
       const height = window.innerHeight;
       const side = Math.random() > 0.5 ? 'top' : 'right';
@@ -148,6 +159,10 @@ const Starfield: React.FC = () => {
       const cx = width / 2;
       const cy = height / 2;
 
+      // Professional Tweak: Scroll-based opacity factor
+      // Stars fade out as user scrolls down to improve text readability
+      const scrollFactor = Math.max(0.2, 1 - scrollY.current / 1000);
+
       // 1. Draw Nebulae
       nebulae.forEach((nebula) => {
         nebula.x += nebula.vx;
@@ -161,7 +176,9 @@ const Starfield: React.FC = () => {
         const ny = nebula.y - (my - cy) * 0.02;
 
         const gradient = ctx.createRadialGradient(nx, ny, 0, nx, ny, nebula.radius);
-        gradient.addColorStop(0, nebula.color);
+        // Dim nebulae even more based on scroll
+        const nebulaColorWithScroll = nebula.color.replace('0.05', (0.05 * scrollFactor).toString());
+        gradient.addColorStop(0, nebulaColorWithScroll);
         gradient.addColorStop(1, 'transparent');
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -192,7 +209,8 @@ const Starfield: React.FC = () => {
         const px = star.x - (mx - cx) * star.z * 0.05;
         const py = star.y - (my - cy) * star.z * 0.05;
 
-        const finalOpacity = (star.baseOpacity * twinkle) + (star.flareOpacity * 2);
+        // Apply scrollFactor to star visibility
+        const finalOpacity = ((star.baseOpacity * twinkle) + (star.flareOpacity * 2)) * scrollFactor;
         const finalSize = star.size * (1 + star.flareOpacity * 2);
 
         ctx.beginPath();
@@ -211,7 +229,7 @@ const Starfield: React.FC = () => {
         m.opacity -= 0.008;
 
         const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 2, m.y - m.vy * 2);
-        grad.addColorStop(0, `rgba(255, 255, 255, ${m.opacity})`);
+        grad.addColorStop(0, `rgba(255, 255, 255, ${m.opacity * scrollFactor})`);
         grad.addColorStop(1, 'transparent');
 
         ctx.beginPath();
@@ -228,12 +246,14 @@ const Starfield: React.FC = () => {
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
     resizeCanvas();
     animate();
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

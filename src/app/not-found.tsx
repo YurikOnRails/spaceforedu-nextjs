@@ -2,7 +2,7 @@ import Link from 'next/link'
  
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#020617] text-white flex flex-col items-center justify-center p-6 text-center">
+    <div className="min-h-screen bg-transparent text-white flex flex-col items-center justify-center p-6 text-center">
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
       <div className="relative z-10">
         <h1 className="text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 mb-4">

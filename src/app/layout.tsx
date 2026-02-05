@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Starfield from "@/components/Starfield";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} font-sans antialiased bg-[#020617]`}
       >
+        <Starfield />
         <CustomCursor />
         {children}
         <CookieBanner />

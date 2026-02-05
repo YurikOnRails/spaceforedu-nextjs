@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Star, ChevronRight, ShieldCheck, GraduationCap, Users, Mouse, ChevronDown } from 'lucide-react';
-import Starfield from './Starfield';
 import LogoMarquee from './ui/LogoMarquee';
 import ContactModal from './ContactModal';
 import InstitutionalShowcaseModal from './InstitutionalShowcaseModal';
@@ -14,9 +13,8 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[#020617]"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
-      <Starfield />
+      <div className="absolute inset-0 bg-transparent"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse"></div>
       
       {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#020617] to-transparent z-10 pointer-events-none"></div>

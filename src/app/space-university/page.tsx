@@ -28,10 +28,10 @@ const UniversityHero = () => {
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-[#020617]"></div>
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[100px]"></div>
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+      <div className="absolute inset-0 bg-transparent"></div>
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[100px]"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -222,7 +222,7 @@ export default function SpaceUniversity() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 selection:text-cyan-300 font-sans">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30 selection:text-cyan-300 font-sans">
       <Navbar />
       <UniversityHero />
       <Features />

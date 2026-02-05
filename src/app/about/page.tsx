@@ -17,7 +17,7 @@ import Image from 'next/image';
 
 const AboutHero = () => (
   <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-[#020617]"></div>
+    <div className="absolute inset-0 bg-transparent"></div>
     {/* Navy & Gold Theme */}
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-slate-800/30 rounded-full blur-[120px] animate-pulse"></div>
     <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-amber-600/10 rounded-full blur-[100px]"></div>
@@ -217,7 +217,7 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-amber-500/30 selection:text-amber-200 font-sans">
+    <div className="min-h-screen bg-transparent text-white selection:bg-amber-500/30 selection:text-amber-200 font-sans">
       <Navbar />
       <AboutHero />
       <GlobalReach />

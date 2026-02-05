@@ -11,7 +11,7 @@ import { PLANS, FAQS } from '../constants';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 selection:text-cyan-300 font-sans">
+    <div className="min-h-screen bg-transparent text-white selection:bg-cyan-500/30 selection:text-cyan-300 font-sans">
       <Navbar />
       <Hero />
       <Services />

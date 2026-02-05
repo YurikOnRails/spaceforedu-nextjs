@@ -14,7 +14,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="Услуги" className="py-32 bg-[#020617] relative">
+    <section id="Услуги" className="py-32 bg-black/20 backdrop-blur-sm relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <div className="flex-1">

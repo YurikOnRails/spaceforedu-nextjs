@@ -33,7 +33,7 @@ export default async function BlogPost({ params }: Props) {
   const mdxSource = await serialize(content);
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
       <Navbar />
       
       <article className="pt-32 pb-20">

@@ -27,10 +27,10 @@ const ProHero = () => {
 
   return (
     <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-      <div className="absolute inset-0 bg-[#020617]"></div>
+      <div className="absolute inset-0 bg-transparent"></div>
       {/* Tech/AI theme - Blue/Teal/Neon */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
       
       <div className="container mx-auto px-6 relative z-10 text-center">
         <RevealOnScroll>
@@ -253,7 +253,7 @@ export default function SpacePro() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-blue-500/30 selection:text-blue-200 font-sans">
+    <div className="min-h-screen bg-transparent text-white selection:bg-blue-500/30 selection:text-blue-200 font-sans">
       <Navbar />
       <ProHero />
       <Solutions />

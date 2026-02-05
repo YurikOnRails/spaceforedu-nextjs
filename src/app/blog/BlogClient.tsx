@@ -19,9 +19,9 @@ import { Post } from '@/lib/types';
 
 const BlogHero = () => (
   <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-[#020617]"></div>
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[120px]"></div>
-    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[100px]"></div>
+    <div className="absolute inset-0 bg-transparent"></div>
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-900/10 rounded-full blur-[120px]"></div>
+    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[100px]"></div>
     
     <div className="container mx-auto px-6 relative z-10 text-center">
       <RevealOnScroll>
@@ -61,7 +61,7 @@ const BlogGrid = ({ posts }: { posts: Post[] }) => {
     : posts.filter(post => post.category === activeCategory);
 
   return (
-    <section className="py-20 bg-[#020617]">
+    <section className="py-20 bg-transparent">
       <div className="container mx-auto px-6">
         <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categories.map((cat) => (
@@ -131,7 +131,7 @@ const BlogGrid = ({ posts }: { posts: Post[] }) => {
 
 export default function BlogClient({ posts }: { posts: Post[] }) {
   return (
-    <div className="min-h-screen bg-[#020617] text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
       <Navbar />
       <BlogHero />
       <BlogGrid posts={posts} />

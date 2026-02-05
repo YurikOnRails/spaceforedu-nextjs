@@ -66,7 +66,7 @@ const PricingSection = ({
   }
 
   return (
-    <Section id={id} className="bg-[#020617]">
+    <Section id={id} className="bg-black/40 backdrop-blur-md">
       <div className="text-center mb-20">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
           {title} {highlightedWord && <span className={getHighlightColor()}>{highlightedWord}</span>}

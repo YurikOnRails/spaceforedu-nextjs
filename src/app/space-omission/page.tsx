@@ -21,9 +21,9 @@ import Image from 'next/image';
 
 const OmissionHero = () => (
   <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-[#020617]"></div>
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/20 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
+    <div className="absolute inset-0 bg-transparent"></div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[120px] animate-pulse"></div>
+    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
     
     <div className="container mx-auto px-6 relative z-10 text-center">
       <RevealOnScroll>
@@ -203,7 +203,7 @@ export default function SpaceOmission() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white selection:bg-emerald-500/30 selection:text-emerald-200 font-sans">
+    <div className="min-h-screen bg-transparent text-white selection:bg-emerald-500/30 selection:text-emerald-200 font-sans">
       <Navbar />
       <OmissionHero />
       <WhatIsIt />
