@@ -65,7 +65,7 @@ const Navbar = () => {
         isVisible ? 'translate-y-0' : '-translate-y-full'
       } ${
         isScrolled 
-          ? 'bg-[#020617]/90 backdrop-blur-xl border-b border-white/10 shadow-lg py-4 lg:py-3' 
+          ? 'bg-[#020617]/95 backdrop-blur-xl shadow-2xl py-4 lg:py-3' 
           : 'bg-transparent py-4 lg:py-6'
       }`}
       style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}
