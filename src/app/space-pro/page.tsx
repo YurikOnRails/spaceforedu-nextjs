@@ -9,16 +9,17 @@ import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection, { Plan } from '../../components/PricingSection';
 import FAQSection from '../../components/FAQSection';
 import { 
-  Bot, 
+  Zap, 
   Cpu, 
   Database, 
   TrendingUp, 
-  Zap, 
   ShieldCheck, 
   Users,
   Briefcase,
   ArrowRight,
-  MessageCircle
+  MessageCircle,
+  Mouse,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -26,7 +27,7 @@ const ProHero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 bg-transparent"></div>
       {/* Tech/AI theme - Blue/Teal/Neon */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] animate-pulse"></div>
@@ -67,6 +68,12 @@ const ProHero = () => {
             </a>
           </div>
         </RevealOnScroll>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+        <Mouse className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-4 h-4 text-blue-400 animate-bounce" />
       </div>
 
       <ContactModal 
@@ -149,6 +156,7 @@ const InfoBlocks = () => (
                 alt="AI Technology" 
                 fill
                 className="object-cover"
+                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
@@ -196,6 +204,7 @@ const InfoBlocks = () => (
                 alt="Business Transformation" 
                 fill
                 className="object-cover"
+                unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
