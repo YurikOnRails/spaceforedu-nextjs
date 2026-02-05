@@ -15,7 +15,7 @@ const Contact = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-cyan-500/5 to-transparent pointer-events-none"></div>
             
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-[1.1] tracking-tight">
+              <h2 className="text-2xl md:text-4xl font-black text-white mb-6 leading-[1.1] tracking-tight">
                 Гарантируем поступление <br className="hidden md:block" />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
                   в учебные заведения Испании

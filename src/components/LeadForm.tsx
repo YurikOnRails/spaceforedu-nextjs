@@ -47,7 +47,7 @@ const LeadForm = ({ className = "", onSuccess }: LeadFormProps) => {
           type="text" 
           required
           className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cyan-500 transition-colors" 
-          placeholder="Илон Маск" 
+          placeholder="Юрий Гагарин" 
         />
         {state.errors?.name && <p className="text-red-400 text-sm ml-1">{state.errors.name[0]}</p>}
       </div>

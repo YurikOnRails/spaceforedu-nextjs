@@ -15,13 +15,28 @@
 @layer base {
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-unbounded), var(--font-inter), sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    font-weight: 700;
   }
+
+  /* Specific fix for Tailwind Typography (prose) headings */
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    font-family: var(--font-unbounded), var(--font-inter), sans-serif !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  p, li, span, div {
+    line-height: 1.6;
+  }
+
+  h1 { font-weight: 800; letter-spacing: -0.04em; }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #f8fafc;
   }
 }
 
@@ -30,6 +45,8 @@ body {
   color: var(--foreground);
   scrollbar-width: thin;
   scrollbar-color: #06b6d4 #020617;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @keyframes fadeIn {
