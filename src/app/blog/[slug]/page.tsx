@@ -9,6 +9,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MDXContent from '@/components/MDXContent';
 
+import { Metadata } from 'next';
+
 interface Props {
   params: Promise<{
     slug: string;
@@ -20,6 +22,25 @@ export async function generateStaticParams() {
   return files.map((filename) => ({
     slug: filename.replace('.mdx', ''),
   }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const markdownWithMeta = fs.readFileSync(
+    path.join('content/blog', slug + '.mdx'),
+    'utf-8'
+  );
+  const { data: frontMatter } = matter(markdownWithMeta);
+
+  return {
+    title: frontMatter.title,
+    description: frontMatter.excerpt,
+    openGraph: {
+      title: frontMatter.title,
+      description: frontMatter.excerpt,
+      images: [frontMatter.image],
+    },
+  };
 }
 
 export default async function BlogPost({ params }: Props) {
@@ -35,6 +56,26 @@ export default async function BlogPost({ params }: Props) {
   return (
     <div className="min-h-screen bg-transparent text-white font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
       <Navbar />
+      
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              "headline": frontMatter.title,
+              "image": frontMatter.image,
+              "datePublished": frontMatter.date,
+              "author": {
+                "@type": "Organization",
+                "name": "SpaceForEdu"
+              },
+              "description": frontMatter.excerpt
+            })
+          }}
+        />
+      </head>
       
       <article className="pt-32 pb-20">
         <div className="container mx-auto px-6 max-w-4xl">
