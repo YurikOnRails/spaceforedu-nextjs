@@ -80,7 +80,7 @@ const PricingSection = ({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {plans.map((plan, i) => (
           <RevealOnScroll key={i}>
-            <div className={`relative p-10 rounded-3xl border transition-all hover:scale-105 duration-300 h-full flex flex-col ${getCardStyles(plan.accent)}`}>
+            <div className={`relative p-6 md:p-10 rounded-3xl border transition-all hover:scale-105 duration-300 h-full flex flex-col ${getCardStyles(plan.accent)}`}>
               {plan.accent && (
                 <div className={`absolute -top-4 left-1/2 -translate-x-1/2 ${getLabelColor()} text-white px-6 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg`}>
                   Популярный выбор

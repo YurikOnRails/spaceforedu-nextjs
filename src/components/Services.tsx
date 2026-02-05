@@ -18,9 +18,9 @@ const Services = () => {
   ];
 
   return (
-    <section id="Услуги" className="py-32 bg-black/20 backdrop-blur-sm relative">
+    <section id="Услуги" className="py-16 md:py-32 bg-black/20 backdrop-blur-sm relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row gap-16 items-center">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
           <div className="flex-1">
             <RevealOnScroll>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">

@@ -62,11 +62,11 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 opacity-0 animate-[fadeIn_1s_ease-out_0.8s_forwards]">
 
           {[
-            { icon: <ShieldCheck />, title: "12+ лет опыта", desc: "Возвращаем деньги, если вы не поступите" },
+            { icon: <ShieldCheck />, title: "100% Гарантия", desc: "Возвращаем деньги, если вы не поступите" },
             { icon: <GraduationCap />, title: "200+ ВУЗов", desc: "Доступ ко всем учебным заведениям Испании" },
             { icon: <Users />, title: "500+ Студентов", desc: "Успешно зачислены в этом году" }
           ].map((item, i) => (
-            <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl text-left hover:border-cyan-500/50 transition-colors">
+            <div key={i} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-2xl text-left hover:border-cyan-500/50 transition-colors">
               <div className="text-cyan-400 mb-4">{item.icon}</div>
               <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
               <p className="text-gray-400 text-sm">{item.desc}</p>
