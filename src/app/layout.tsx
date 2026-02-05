@@ -7,6 +7,10 @@ import Starfield from "@/components/Starfield";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from "next/script";
 
+import MobileStickyCTA from "@/components/MobileStickyCTA";
+import ExitIntentModal from "@/components/ExitIntentModal";
+import ReadingProgress from "@/components/ui/ReadingProgress";
+
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   variable: "--font-inter",
@@ -107,8 +111,11 @@ export default function RootLayout({
           }}
         />
         <Starfield />
+        <ReadingProgress />
         <CustomCursor />
         {children}
+        <MobileStickyCTA />
+        <ExitIntentModal />
         <CookieBanner />
 
         {/* Facebook Pixel */}
