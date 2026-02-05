@@ -107,7 +107,7 @@ const LeadForm = ({ className = "", onSuccess, withHeader = true }: LeadFormProp
               type="text" 
               required
               className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all hover:border-white/20" 
-              placeholder="Иван" 
+              placeholder="Юрий Гагарин" 
             />
             {state.errors?.name && (
               <div className="flex items-center gap-1.5 text-red-400 text-xs ml-1 mt-1 animate-fadeIn">
@@ -125,7 +125,7 @@ const LeadForm = ({ className = "", onSuccess, withHeader = true }: LeadFormProp
               type="tel" 
               required
               className="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 focus:bg-white/10 transition-all hover:border-white/20" 
-              placeholder="+7..." 
+              placeholder="+34..." 
             />
             {state.errors?.phone && (
                <div className="flex items-center gap-1.5 text-red-400 text-xs ml-1 mt-1 animate-fadeIn">

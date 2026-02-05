@@ -1,8 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Contact from '../../components/Contact';
+import ContactModal from '../../components/ContactModal';
 import Footer from '../../components/Footer';
 import RevealOnScroll from '../../components/RevealOnScroll';
 import PricingSection from '../../components/PricingSection';
@@ -23,46 +24,52 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
-const TutoringHero = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-    <div className="absolute inset-0 bg-transparent"></div>
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-pulse"></div>
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-    
-    <div className="container mx-auto px-6 relative z-10 text-center">
-      <RevealOnScroll>
-        <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-indigo-300 text-sm mb-8">
-          <BookOpen className="w-4 h-4" />
-          <span>Extraescolares в Испании</span>
-        </div>
-        <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight">
-          ВНЕКЛАССНЫЕ ЗАНЯТИЯ<br />
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300">
-            И РЕПЕТИТОРСТВО
-          </span>
-        </h1>
-        <p className="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
-          Обеспечим вашему ребенку эффективную дополнительную помощь и поддержку в учебе.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="#Contact"
-            className="bg-indigo-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-indigo-500/20 cursor-pointer"
-          >
-            ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
-            <ArrowRight size={20} />
-          </a>
-        </div>
-      </RevealOnScroll>
-    </div>
+const TutoringHero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    {/* Scroll Indicator */}
-    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
-      <Mouse className="w-6 h-6 text-gray-400" />
-      <ChevronDown className="w-4 h-4 text-pink-400 animate-bounce" />
-    </div>
-  </section>
-);
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-transparent"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+      
+      <div className="container mx-auto px-6 relative z-10 text-center">
+        <RevealOnScroll>
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-sm border border-white/10 px-4 py-2 rounded-full text-indigo-300 text-sm mb-8">
+            <BookOpen className="w-4 h-4" />
+            <span>Extraescolares в Испании</span>
+          </div>
+          <h1 className="text-3xl md:text-7xl font-black text-white mb-8 leading-tight">
+            ВНЕКЛАССНЫЕ ЗАНЯТИЯ И<br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300">
+              РЕПЕТИТОРСТВО
+            </span>
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+            Обеспечим вашему ребенку эффективную дополнительную помощь и поддержку в учебе.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-sm sm:max-w-none mx-auto">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-6 py-4 sm:px-10 sm:py-5 rounded-2xl font-bold text-base sm:text-lg transition-all shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] flex items-center justify-center gap-2 group cursor-pointer active:scale-95 transform duration-200"
+            >
+              ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        </RevealOnScroll>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-4 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-0 animate-[fadeIn_1s_ease-out_2.5s_forwards]">
+        <Mouse className="w-6 h-6 text-gray-400" />
+        <ChevronDown className="w-4 h-4 text-pink-400 animate-bounce" />
+      </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </section>
+  );
+};
 
 const Features = () => {
   const features = [
@@ -84,17 +91,17 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-24 bg-black/50">
+    <section className="py-16 md:py-24 bg-black/50">
       <div className="container mx-auto px-6">
         <RevealOnScroll>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {features.map((feature, i) => (
-              <div key={i} className="relative bg-[#0a0a0a] border border-white/10 p-8 rounded-2xl hover:border-indigo-500/50 transition-colors group">
+              <div key={i} className="relative bg-[#0a0a0a] border border-white/10 p-6 md:p-8 rounded-2xl hover:border-indigo-500/50 transition-colors group">
                 <div className="absolute -top-6 left-8 w-12 h-12 bg-gradient-to-br from-pink-400 to-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mt-6 mb-4">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.desc}</p>
+                <p className="text-gray-400 leading-relaxed text-sm md:text-base">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -105,11 +112,11 @@ const Features = () => {
 };
 
 const WhyChooseUs = () => (
-  <section className="py-24 relative overflow-hidden">
+  <section className="py-16 md:py-24 relative overflow-hidden">
     <div className="container mx-auto px-6">
       <RevealOnScroll>
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-indigo-400 font-bold tracking-widest uppercase mb-4">
+        <div className="text-center mb-10 md:mb-16">
+          <div className="inline-flex items-center gap-2 text-indigo-400 font-bold tracking-widest uppercase mb-4 text-sm md:text-base">
             <Sparkles size={18} />
             <span>Преимущества</span>
           </div>
@@ -118,7 +125,7 @@ const WhyChooseUs = () => (
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
           {[
             {
               icon: <Target className="text-pink-400" size={32} />,
@@ -149,20 +156,20 @@ const WhyChooseUs = () => (
 );
 
 const InfoBlocks = () => (
-  <section className="py-24 relative overflow-hidden">
-    <div className="container mx-auto px-6 space-y-32">
+  <section className="py-16 md:py-24 relative overflow-hidden">
+    <div className="container mx-auto px-6 space-y-16 md:space-y-32">
       {/* Block 1 */}
       <RevealOnScroll>
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          <div className="flex-1 space-y-8">
-            <div className="inline-flex items-center gap-3 text-indigo-400 font-bold tracking-[0.2em] uppercase text-sm border-b border-indigo-500/30 pb-2">
+        <div className="flex flex-col lg:flex-row gap-10 md:gap-16 items-center">
+          <div className="flex-1 space-y-6 md:space-y-8">
+            <div className="inline-flex items-center gap-3 text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm border-b border-indigo-500/30 pb-2">
               <UserCheck size={18} />
               <span>Индивидуальный подход</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white leading-tight">
               Репетиторство для школьников в Испании
             </h2>
-            <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
+            <div className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed">
               <p>
                 Является популярной и эффективной формой дополнительного образования. Вместе с тем, это отличная возможность для школьников получить дополнительную помощь и поддержку в учебе.
               </p>
@@ -189,16 +196,16 @@ const InfoBlocks = () => (
 
       {/* Block 2 */}
       <RevealOnScroll>
-        <div className="flex flex-col lg:flex-row-reverse gap-16 items-center">
-          <div className="flex-1 space-y-8">
-            <div className="inline-flex items-center gap-3 text-indigo-400 font-bold tracking-[0.2em] uppercase text-sm border-b border-indigo-500/30 pb-2">
+        <div className="flex flex-col lg:flex-row-reverse gap-10 md:gap-16 items-center">
+          <div className="flex-1 space-y-6 md:space-y-8">
+            <div className="inline-flex items-center gap-3 text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm border-b border-indigo-500/30 pb-2">
               <Pencil size={18} />
               <span>Процесс</span>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white leading-tight">
               Как работает услуга<br />«Репетиторство»
             </h2>
-            <ul className="space-y-6 text-gray-400 text-lg leading-relaxed">
+            <ul className="space-y-6 text-gray-400 text-base md:text-lg leading-relaxed">
               <li className="flex gap-4 items-start bg-white/5 p-4 rounded-xl border border-white/10">
                 <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center flex-shrink-0 text-white font-bold">1</div>
                 <span>
