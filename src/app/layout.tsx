@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Inter, Unbounded } from "next/font/google";
 import "./globals.css";
 import CookieBanner from "@/components/CookieBanner";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Starfield from "@/components/Starfield";
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-manrope",
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const unbounded = Unbounded({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-unbounded",
   display: "swap",
 });
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        className={`${manrope.variable} font-sans antialiased bg-[#020617]`}
+        className={`${inter.variable} ${unbounded.variable} font-sans antialiased bg-[#020617]`}
       >
         <Starfield />
         <CustomCursor />
